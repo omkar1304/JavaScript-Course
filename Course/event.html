@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    
+    <h4>4 ways of writing events in JS</h4>
+
+    <h5>
+        <a href="#" onclick="alert('Hello! Using inline alert');"><span>1. Using inline alert</span></a>
+    </h5>
+
+    <h5>
+        <a href="#" onclick="myfun()"><span>2. By calling function(Common way)</span></a>
+    </h5>
+
+    <h5>
+        <a href="#"><span id="id">3. By using DOM and event(onclick)</span></a>
+    </h5>
+
+    <h5>
+        <a href="#"><span id="id2">4. By using DOM and addEventListener</span></a>
+    </h5>
+
+    <hr>
+
+    <h4>Checking event object</h4>
+
+    <a href="#"><span id="id3">generate event object</span></a>
+
+    <hr>
+
+    <h4>Mouse events</h4>
+
+    <h5>onmousedown(press in) v/s onmouseup(press out)</h5>
+    <p id="id4" onmousedown="mouseDown()" onmouseup="mouseUp()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi perspiciatis facilis nesciunt placeat deleniti optio assumenda dolor dolorum ut soluta ipsam obcaecati dignissimos odio ab, earum aspernatur praesentium ea unde.
+    </p>
+
+    <h5> onmouseenter(hover in) v/s onmouseleave(hover out</h5>
+    <p id="id5" onmouseenter="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi perspiciatis facilis nesciunt placeat deleniti optio assumenda dolor dolorum ut soluta ipsam obcaecati dignissimos odio ab, earum aspernatur praesentium ea unde.</p>
+
+    <hr>
+
+    <h4>Keyboard events</h4>
+
+    <label for="">onKeyPress</label>
+    <input type="text" onkeypress="onKeyPress()">
+    <span id="id6"></span>
+
+    <br><br>
+
+    <label for="">onKeyDown(press in)</label>
+    <input type="text" onkeydown="onKeyDown()">
+    <span id="id7"></span>
+
+    <br><br>
+
+    <label for="">onKeyUp(press out)</label>
+    <input type="text" onkeyup="onKeyUp()">
+    <span id="id8"></span>
+
+    <hr>
+
+    <h4>Input events</h4>
+
+    <label for="">onchange</label>
+    <input type="text" id="id9" onchange="onChange()">
+    <span id="id10"></span>
+
+    <hr>
+
+    <h4>Time based events</h4>
+
+    <h5>setTimeout</h5>
+    <p onclick="time = setTimeout(myfunction, 2000)">start</p>
+    <p onclick="clearTimeout(time)">stop</p>
+    <p id="test"></p>
+
+    <h5>setTimeout</h5>
+    <p onclick="interval = setInterval(myfunction2, 1000)">start clock</p>
+    <p onclick="clearInterval(interval)">stop clock</p>
+    <p id="test2"></p> -->
+
+    <!-- <!-- <h5>handling timebased event with event listner</h5>
+    <p href="" id="id11"><span>Start</span></p>
+    <p id="test"></p> -->
+
+
+    <script>
+        // 2nd
+        function myfun(){
+            alert("Hello! By calling function(Common way)");
+        }
+
+        // 3rd
+        const myID = document.getElementById('id');
+        myID.onclick = function(){
+            alert("Hello! By using DOM and event(onclick)");
+        }
+
+        //4th
+
+        // addEventListener -> takes param(event name like 'click', function)
+        const myID2 = document.getElementById('id2');
+        myID2.addEventListener('click', () => alert("Hello! By using DOM and addEventListener"));
+
+
+        // event object
+        const myID3 = document.getElementById('id3');
+        myID3.addEventListener('click', () => {
+            alert("Event object generated. Please check console");
+            console.log(event);
+            console.log(event.target);
+            console.log(event.type);
+        })
+
+        // mouse events
+
+        function mouseDown(){
+            const myID4 = document.getElementById('id4').style.color = 'red'; // to apply CSS using DOM
+        }
+
+        function mouseUp(){
+            const myID4 = document.getElementById('id4').style.color = 'green'; // to apply CSS using DOM
+        }
+
+        myId5 = document.getElementById('id5');
+        myId5.addEventListener('mouseenter', () => myId5.style.color = 'red'); // to apply CSS using DOM
+        myId5.addEventListener('mouseleave', () => myId5.style.color = 'green');
+
+        // keyboard events
+
+        function onKeyPress(){
+            document.getElementById('id6').innerHTML = event.key;
+        }
+
+        function onKeyDown(){
+            document.getElementById('id7').innerHTML = event.key;
+        }
+
+        function onKeyUp(){
+            document.getElementById('id8').innerHTML = event.key; // to get and assignevent key 
+        }
+
+        // input event
+
+        function onChange(){
+            const val = document.getElementById('id9').value; // to get value from input field after pressing enter
+            document.getElementById('id10').innerHTML = val;
+        }
+
+        // Time based event
+
+
+        function myfunction(){
+            const myTest = document.getElementById('test');
+            myTest.innerHTML = "Omkar Pedamkar";
+        }
+
+        function myfunction2(){
+            let time = new Date()
+            const myTest2 = document.getElementById('test2');
+            myTest2.innerHTML = `${time.toLocaleTimeString()}`;
+        }
+        
+        // handling timebased event with event listner example ->
+        // const time = document.getElementById('id11');
+        // time.addEventListener('click', () => {
+        //     const myTest = document.getElementById('test');
+        //     myTest.innerHTML = "Loading............";
+            
+        //     const mySetTimeout = setTimeout(() => {
+               
+        //         myTest.innerHTML = "Omkar Pedamkar";
+        //     }, 3000)
+        // })
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        .outer-box {
+            width: 50%;
+            height: 200px;
+            background-color: #00b0ff;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #888888;
+        }
+
+        .inner-box {
+            width: 70%;
+            height: 150px;
+            background-color: #b2ff59;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #888888;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+</head>
+<body>
+    <div class="outer-box" id="parent">
+        <div class="inner-box" id="child">
+        </div>
+      </div>
+
+      <script>
+
+        /*
+        if we pass third option as boolean value then we can decide event propagtion ->
+        by default its bubbling phase
+        false : bubbling phase -> inner event then outer event
+        true : capture phase -> outer event then inner event
+        */
+        const outerBox = document.getElementById('parent');
+        const innerBox = document.getElementById('child');
+
+        outerBox.addEventListener('click', () => alert("Hey! I'm outer box"), true);
+        innerBox.addEventListener('click', () => alert("Hey! I'm inner box"), true);
+
+      </script>
+</body>
+</html>

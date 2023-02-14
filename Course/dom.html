@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+
+    <div>
+        <h1 id="heading1">I'm heading 1</h1>
+
+        <h2 class="heading2">I'm heading 2</h2>
+
+        <h3 class="heading2">I'm heading 3</h3>
+        <form action="">
+            <input type="radio" name="name">
+            <label>Male</label>
+
+            <input type="radio" name="name">
+            <label>Female</label>
+            
+        </form>
+        
+    </div>
+    <br>
+    <button onclick=myFun()>check</button>
+
+    <script>
+        function myFun(){
+
+            // to access and change value in tags using id -> (to access tag using id)
+
+            // access value 
+            // var access = document.getElementById('heading1').innerHTML;
+            // console.log(access);
+            // to change value 
+            // document.getElementById('heading1').innerHTML = "Changed value for heading 1";
+
+
+            // to access tag using class ->
+            // console.log(document.getElementsByClassName('heading2'));
+
+
+            // to access tag using tag itself ->
+            // console.log(document.getElementsByTagName('h3'));
+
+            
+            // to access tag using name ->
+            // console.log(document.getElementsByName('name'));
+
+            
+            // to acess tag using queryselector ->
+            // it only returns first match even tho if multiple results are aviailble(if 2 tags having same class then it will return first tag. see below)
+            // console.log(document.querySelector('#heading1'));  // we have to define id with #
+            // console.log(document.querySelector('.heading2')); // we have to define class with .
+            // console.log(document.querySelector('h3')); // we can define tag directly
+
+            // to select all which having same class name we can use querySelectorAll. it will return array of DOM
+            //let counters = document.querySelectorAll('.myIcon');
+
+        }
+    </script>
+    
+</body>
+</html>

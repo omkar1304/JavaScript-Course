@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <title>API Project with XML</title>
+</head>
+<body>
+    <div class="box" id="container">
+        <!-- main box -->
+    </div>
+    
+    <!-- to reload page -->
+    <div class="next-button-container"> 
+        <button id="next-button">Next</button>
+    </div>
+      
+    <script>
+        
+        // to get access of main box div
+        let container = document.getElementById('container');
+        
+        // to call API here we are using XMLHttpRequest
+
+        // creating object of it
+        let request = new XMLHttpRequest();
+        // open that object with method type -> get,put,delete,post.. and mention API url
+        request.open('GET', "https://official-joke-api.appspot.com/random_joke");
+        // then send request to API server
+        request.send();
+
+        // we can use event listener with xml object
+
+        // once page loads run this function
+        request.addEventListener('load', function(){
+            // to get requested data we need to use -> this.responseText
+            // and it will give proper json data so to convert json into JS object we need to use -> JSON.parse(this.responseText);
+            let data = JSON.parse(this.responseText);
+            // and now we can acceess that data as object in JS like below ->
+            console.log(data.id);
+            console.log(data.type);
+            console.log(data.setup);
+            console.log(data.punchline);
+
+            // here we are storing the html data which we want to display in box with dynamic JS value using template literal
+            let htmlData = `
+                <div class="box-header">${data.type}</div>
+                <div class="box-body">
+                <div class="setup">${data.setup}</div>
+                <div class="punchline">${data.punchline}</div>
+                </div>
+            `;
+
+            // now we can use that main box container to pass this html data 
+            // insertAdjacentHTML is same as innerHTML but here we can define position as well
+            // 4 positions -> 1. afterbegin, 2. afterend, 3. beforebegin, 4. beforebegin
+            container.insertAdjacentHTML('afterbegin', htmlData);
+        });
+
+        // This is simple code to reload the page using DOM
+        const nextButton = document.getElementById('next-button');
+        nextButton.addEventListener('click', function(){
+            location.reload();
+        });
+        
+    </script>
+</body>
+</html>
